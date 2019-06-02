@@ -31,9 +31,9 @@
         function createAsteroid() {
             elementCreate = document.createElement("img");
             elementCreate.setAttribute('src', 'rockAsteroid.svg');
-            elementCreate.setAttribute('style', 'position:absolute; top:' + Math.round(Math.random() * WINDOW_HEIGHT - 100) + 'px; left:0px');
             elementCreate.setAttribute('class', 'rockAsteroid');
             asteroidHp = Math.floor(Math.random() * 100 + 50);
+            elementCreate.setAttribute('style', 'position:absolute; top:' + Math.round(Math.random() * (WINDOW_HEIGHT - asteroidHp * 2)) + 'px; left:0px');
             elementCreate.setAttribute('data-asteroidHealth', asteroidHp);
             elementCreate.style.width = asteroidHp + 'px';
             elementCreate.style.height = 'auto';
@@ -49,8 +49,8 @@
             rockAsteroids = document.getElementsByClassName("rockAsteroid");
 
             for (var i = 0, max = rockAsteroids.length; i < max; i++) {
-                rockAsteroids[i].style.left = parseInt(rockAsteroids[i].offsetLeft) + 5 + "px";
-                if (rockAsteroids[i].offsetLeft >= WINDOW_WIDTH - rockAsteroids[i].data-asteroidHealth) {
+                rockAsteroids[i].style.left = parseInt(rockAsteroids[i].offsetLeft) + 2 + "px";
+                if (rockAsteroids[i].offsetLeft >= WINDOW_WIDTH - rockAsteroids[i].getAttribute('data-asteroidHealth') - 1) {
                     asteroidDiv.removeChild(rockAsteroids[i]);
                 }
             }
