@@ -7,6 +7,10 @@
         body {
             background-image: url("starBackground.png");
         }
+
+        .unselectable {
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -31,7 +35,7 @@
         function createAsteroid() {
             elementCreate = document.createElement("img");
             elementCreate.setAttribute('src', 'rockAsteroid.svg');
-            elementCreate.setAttribute('class', 'rockAsteroid asteroids');
+            elementCreate.setAttribute('class', 'rockAsteroid unselectable asteroids');
             asteroidHp = Math.floor(Math.random() * 100 + 50);
             elementCreate.setAttribute('style', 'position:absolute; top:' + Math.round(Math.random() * (WINDOW_HEIGHT - asteroidHp * 2)) + 'px; left:0px');
             elementCreate.setAttribute('data-asteroidHealth', asteroidHp);
@@ -39,7 +43,7 @@
             elementCreate.style.height = 'auto';
             randomId = "";
             for (var i = 0; i < 8; i++) {
-                randomId = randomId + LETTERS_AND_STUFF.charAt(Math.round(Math.random() * (LETTERS_AND_STUFF.length-1)))
+                randomId = randomId + LETTERS_AND_STUFF.charAt(Math.round(Math.random() * (LETTERS_AND_STUFF.length - 1)))
             }
             elementCreate.setAttribute('id', randomId)
             asteroidDiv.appendChild(elementCreate);
